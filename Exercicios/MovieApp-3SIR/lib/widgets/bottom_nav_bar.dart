@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/pages/home/home_page.dart';
+import 'package:movie_app/pages/future_page.dart';
 import 'package:movie_app/pages/search/search_page.dart';
 import 'package:movie_app/pages/top_rated/top_rated_page.dart';
 
@@ -27,7 +27,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
             });
           },
           children: const [
-            HomePage(),
+            // HomePage(),
+            FuturePage(),
             SearchPage(),
             TopRatedPage(),
           ],

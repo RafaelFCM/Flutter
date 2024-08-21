@@ -12,6 +12,7 @@ class NowPlayingList extends StatefulWidget {
 
 class _NowPlayingListState extends State<NowPlayingList> {
   final PageController _pageController = PageController(viewportFraction: 0.9);
+  int currentPage = 0;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,6 +20,14 @@ class _NowPlayingListState extends State<NowPlayingList> {
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.5,
           child: PageView.builder(
+            onPageChanged: (int page) {
+              setState(() {
+                currentPage = page;
+              });
+            },
+            //variavel de estado, colocar dentro da classe
+            //pra ser acessivel,
+            //por isso chama o int currentPage dentro da classe
             controller: _pageController,
             itemCount: widget.movies.length,
             itemBuilder: (context, index) {
@@ -36,8 +45,19 @@ class _NowPlayingListState extends State<NowPlayingList> {
     );
   }
 
+//underline = private
   List<Widget> _buildPageIndicators() {
-    return [];
+    List<Widget> indicators = [];
+    for (var i = 0; i < widget.movies.length; i++) {
+      indicators.add(_buildIndicator(i == currentPage));
+      // indicators.add(_buildIndicator(false));
+    }
+    return indicators;
+    // return [
+    //   _buildIndicator(false),
+    //   _buildIndicator(false),
+    //   _buildIndicator(true),
+    // ];
   }
 
   Widget _buildIndicator(bool isActive) {
