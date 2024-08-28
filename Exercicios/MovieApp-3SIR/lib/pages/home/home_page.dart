@@ -14,11 +14,16 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final ApiServices apiServices = ApiServices();
   List<Movie> nowPlayingMovies = [];
+  List<Movie> popularMovies = [];
+  List<Movie> upcomingMovies = [];
 
   @override
   void initState() {
-    nowPlayingMovies = apiServices.getMovies();
     super.initState();
+    // Supondo que você tenha funções getPopularMovies e getUpcomingMovies no ApiServices
+    nowPlayingMovies = apiServices.getMovies();
+    popularMovies = apiServices.getMovies();
+    upcomingMovies = apiServices.getMovies();
   }
 
   @override
@@ -58,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              const MoviesHorizontalList(),
+              MoviesHorizontalList(movies: popularMovies),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                 child: Text(
@@ -70,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              const MoviesHorizontalList(),
+              MoviesHorizontalList(movies: upcomingMovies),
               const SizedBox(
                 height: 20,
               ),

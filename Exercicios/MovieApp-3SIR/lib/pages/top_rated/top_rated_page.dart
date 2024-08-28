@@ -27,10 +27,11 @@ class _TopRatedPageState extends State<TopRatedPage> {
         title: const Text('Top Rated Movies'),
       ),
       body: ListView.builder(
-          itemCount: movies.length,
-          itemBuilder: (context, index) {
-            return TopRatedMovie(movie: movies[index]);
-          }),
+        itemCount: movies.length,
+        itemBuilder: (context, index) {
+          return TopRatedMovie(movie: movies[index]);
+        },
+      ),
     );
   }
 }
